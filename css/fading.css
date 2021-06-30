@@ -1,0 +1,41 @@
+.fullpage-wrapper {
+    width: 100% !important;
+    transform: none !important;
+}
+.fp-tableCell{
+    position: relative;
+}
+
+.fp-section {
+    width: 100% !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.7s ease-in;
+}
+.fp-section.active.fp-completely{
+    visibility: visible;
+    opacity: 1;
+}
+
+fp-slidesContainer {
+    width: 100% !important;
+    transform: none !important;
+}
+
+.fp-slide {
+    width: 100% !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .7s ease-in;
+}
+
+.fp-slide.active {
+    visibility: visible;
+    opacity: 1;
+}
