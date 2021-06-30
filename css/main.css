@@ -451,7 +451,7 @@ body {
 
     .catalog {
         position: absolute;
-        bottom: 60px;
+        bottom: 30px;
         right: 15px;
         z-index: 900;
         /*border: solid 1px #191919;*/
@@ -664,7 +664,7 @@ body {
 
     .catalog {
         position: absolute;
-        bottom: 80px;
+        bottom: 30px;
         right: 50px;
         z-index: 900;
         /*border: solid 1px #191919;*/
