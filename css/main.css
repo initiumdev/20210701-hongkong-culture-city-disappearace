@@ -522,8 +522,9 @@ body {
     .section p {
         max-width: 720px;
         margin: 0 auto;
-        padding: 20px 10px 0px;
-        font-size: 14px;
+        padding: 10px 10px 0px;
+        font-size: 13px;
+        line-height: 1.3em;
         text-align: justify;
         text-justify: inter-ideograph;
     }
@@ -533,9 +534,9 @@ body {
         left: 20px;
     }
 
-    .section img {
+    /* .section img {
         padding-top: 20px;
-    }
+    } */
 
     .section img.ending-dot{
         padding-top: 0px;
