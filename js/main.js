@@ -1,6 +1,6 @@
 $(function () {
-    let animationTime = 700;
-    let fadeOutTime = 1000;
+    let animationTime = 300;
+    let fadeOutTime = 300;
     let inBetween = 0.4;
     let downOnly = true;
     let showBlankSectionBetween = false;
