@@ -537,6 +537,10 @@ body {
         padding-top: 20px;
     }
 
+    .section img.ending-dot{
+        padding-top: 0px;
+    }
+
     .ending-logo img {
         padding-top: 0px;
         margin: 0px;
@@ -897,6 +901,7 @@ body {
 .ending-dot {
     width: 7px;
     height: 7px;
+    padding: 0px;
 }
 .story-end-line-white .ending-dot{
     filter: invert(1);
