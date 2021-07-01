@@ -480,7 +480,7 @@ body {
         width: 340px;
         font-size: 17px;
         padding-bottom: 35px;
-        height: 215px;
+        /* height: 215px; */
     }
 
     .fullscreen-lirt .fullscreen-img {
@@ -760,7 +760,7 @@ body {
         width: 340px;
         font-size: 17px;
         padding-bottom: 35px;
-        height: 215px;
+        /* height: 215px; */
         border: solid 1px #000;
     }
 
@@ -906,4 +906,57 @@ body {
 }
 .story-end-line-white .ending-dot{
     filter: invert(1);
+}
+
+.tips{
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 9;
+}
+@media (max-width: 768px){
+    .tips{
+        display: none;
+    }
+}
+.tips::before{
+    content: '';
+    display: block;
+    width: 1px;
+    height: 100px;
+    position: absolute;
+    left: 45px;
+    bottom: 50px;
+    background: #212529;
+    
+}
+.tips::after{
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    border-radius: 50%;
+    left: 42px;
+    bottom: 150px;
+    background: #212529;
+    animation: scroll 2s ease infinite;
+}
+@keyframes scroll{
+    0%{
+        opacity: 0;
+        transform: translateY(0px)
+    }
+    30%{
+        opacity: 1;
+        transform: translateY(0px)
+    }
+    70%{
+        opacity: 1;
+        transform: translateY(100px)
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(100px)
+    }
 }

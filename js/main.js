@@ -84,6 +84,9 @@ $(function () {
             if (index == maxSlideIndex) {
                 $('.catalog').fadeOut();
             }
+            if (index == 5) {
+                $('.tips').fadeOut();
+            }
             if (false) {
                 if (Math.round(((index - 1) / (maxSlideIndex - 1)) * 100) >= showPer && index != maxSlideIndex) {
                     $('.catalog').fadeIn();
