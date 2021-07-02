@@ -1,12 +1,13 @@
 $(function () {
-    let animationTime = 600;
-    let fadeOutTime = 600;
+    let animationTime = 300;
+    let fadeOutTime = 300;
     let inBetween = 0.4;
     let downOnly = true;
     let showBlankSectionBetween = false;
-    let showBlankBetween = true;
+    let showBlankBetween = false;
     let showPer = 30;
     let showIndex = 3;
+    let sensitivity = 20;
 
     let init = true;
     let showPopup = true;
@@ -21,12 +22,14 @@ $(function () {
             sectionIndexCounter++;
         });
     }
+    let tempUp = false;
 
     $('.review-link-group').click(function (event) {
         event.preventDefault();
         let rel = $(this).attr('rel');
         $('.section-12').animate({opacity: 0}, animationTime, function () {
             doneAnimation = true;
+            tempUp = true;
             $.fn.fullpage.moveTo(sectionArray[rel][0]);
         })
     });
@@ -34,7 +37,7 @@ $(function () {
         event.preventDefault();
         $('.fp-section.active').animate({opacity: 0}, animationTime, function () {
             doneAnimation = true;
-            downOnly = false;
+            // downOnly = false;
             showPopup = false;
             $.fn.fullpage.moveTo(sectionIndexCounter - 1);
             $('.catalog').fadeOut();
@@ -57,6 +60,7 @@ $(function () {
         scrollOverflow: true,
         scrollSpeed: animationTime,
         setAllowScrolling: true,
+        touchSensitivity: sensitivity,
         afterRender: function () {
             // onLoad
             if (init) {
@@ -84,9 +88,6 @@ $(function () {
             if (index == maxSlideIndex) {
                 $('.catalog').fadeOut();
             }
-            if (index == 5) {
-                $('.tips').fadeOut();
-            }
             if (false) {
                 if (Math.round(((index - 1) / (maxSlideIndex - 1)) * 100) >= showPer && index != maxSlideIndex) {
                     $('.catalog').fadeIn();
@@ -110,9 +111,9 @@ $(function () {
             }
 
             // Section End
-            if (index == maxSlideIndex) {
-                downOnly = false;
-            }
+            // if (index == maxSlideIndex) {
+            //     downOnly = false;
+            // }
 
             setTimeout(function () {
                 activeScroll();
@@ -121,6 +122,10 @@ $(function () {
             doneAnimation = false;
         },
         onLeave: function (index, nextIndex, direction) {
+            if (tempUp){
+                tempUp = false;
+                return true;
+            }
             if (downOnly && direction == 'up') {
                 if (!doneAnimation) {
                     $.fn.fullpage.moveTo(index + 1);
@@ -153,14 +158,16 @@ $(function () {
                 if (arrayValue.includes(nextIndex)) {
                     nextSection = arrayIndex;
                 }
-
-                if ((showBlankBetween || sectionArray[1].includes(nextIndex)) && !arrayValue.includes(nextIndex)) {
-                    $('#fullpage').removeClass('bg-' + arrayIndex);
-                }
             })
-            if ((!showBlankBetween || sectionArray[1].includes(nextIndex)) && currentSection == nextSection) {
-                $('#fullpage').addClass('bg-' + currentSection);
+
+            if (sectionArray[1].includes(nextIndex) && sectionArray[1].includes(index)) {
+                $('#fullpage').addClass('bg-1');
+            } else {
+                $('#fullpage').removeClass('bg-1');
             }
+            // if ((sectionArray[1].includes(nextIndex)) && currentSection == nextSection) {
+            //     $('#fullpage').addClass('bg-' + currentSection);
+            // }
 
             if (sectionArray[1].includes(index) && !sectionArray[1].includes(nextIndex)) {
                 $('.logo').stop().fadeOut(animationTime);
@@ -186,26 +193,30 @@ $(function () {
                                     activeScroll();
                                 });
                             } else {
-                                doneAnimation = true;
-                                activeScroll();
-                                $.fn.fullpage.moveTo(nextIndex);
+                                $('.fp-section.active').animate({opacity: 0}, animationTime, function () {
+                                    doneAnimation = true;
+                                    // activeScroll();
+                                    $.fn.fullpage.moveTo(nextIndex);
+                                });
                             }
                         }, (i + 1) * fadeOutTime * inBetween);
                     }
                 }
                 return doneAnimation;
-            } else if ($('.fp-section.active .disappear').length > 0 && (direction == 'down' || (direction == 'up' && downOnly))) {
+            } else if ($('.fp-section.active .disappear, .fp-section.active.disappear').length > 0 && (direction == 'down' || (direction == 'up' && downOnly))) {
                 if (!doneAnimation) {
-                    $('.fp-section.active .disappear').animate({opacity: 0}, fadeOutTime, function () {
+                    $('.fp-section.active .disappear, .fp-section.active.disappear').animate({opacity: 0}, fadeOutTime, function () {
                         if (showBlankBetween && !sectionArray[1].includes(nextIndex)) {
                             $('.fp-section.active').animate({opacity: 0}, animationTime, function () {
                                 doneAnimation = true;
                                 activeScroll();
                             });
                         } else {
-                            doneAnimation = true;
-                            activeScroll();
-                            $.fn.fullpage.moveTo(nextIndex);
+                            $('.fp-section.active').animate({opacity: 0}, animationTime, function () {
+                                doneAnimation = true;
+                                // activeScroll();
+                                $.fn.fullpage.moveTo(nextIndex);
+                            });
                         }
                     });
                 }
@@ -234,7 +245,7 @@ $(function () {
     }
 
     function activeScroll () {
-        $.fn.fullpage.setAllowScrolling(true, 'all');
-        $.fn.fullpage.setKeyboardScrolling(true, 'all');
+        $.fn.fullpage.setAllowScrolling(true, 'down');
+        $.fn.fullpage.setKeyboardScrolling(true, 'down');
     }
 })

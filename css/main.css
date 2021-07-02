@@ -253,7 +253,8 @@ body {
     background: #F2f2f2;
     /*position: relative;*/
 }
-.section-outer{
+
+.section-outer {
     position: relative;
 }
 
@@ -436,14 +437,21 @@ body {
 .catalog {
     cursor: pointer;
 }
-.scroll-down{
+
+.scroll-down {
     margin-top: 25px;
 }
+
 .scroll-down img {
     width: 20px;
     padding-top: 0px;
 }
+
 @media (max-width: 768px) {
+    .container {
+        margin-bottom: 40px;
+    }
+
     .logo img {
         width: 55px;
         height: 55px;
@@ -474,13 +482,13 @@ body {
         font-family: "Noto Sans TC", sans-serif;
         background: #e5e5e5;
         border: solid 1px #000;
-        left: calc(50% - 170px);
-        top: calc(50% - 113px);
+        left: calc(50% - 150px);
+        top: calc(50% - 135px);
         position: absolute;
-        width: 340px;
+        width: 300px;
         font-size: 17px;
         padding-bottom: 35px;
-        /* height: 215px; */
+        height: 270px;
     }
 
     .fullscreen-lirt .fullscreen-img {
@@ -496,6 +504,7 @@ body {
         padding: 20px 20px;
         float: right;
     }
+
     .popup-info-box .close-bar img {
         width: 25px;
         filter: invert(1);
@@ -537,8 +546,7 @@ body {
     /* .section img {
         padding-top: 20px;
     } */
-
-    .section img.ending-dot{
+    .section img.ending-dot {
         padding-top: 0px;
     }
 
@@ -651,6 +659,7 @@ body {
         padding-left: 30px;
         padding-right: 30px;
     }
+
     .scroll-down img {
         width: 20px;
         padding-top: 0px;
@@ -770,7 +779,7 @@ body {
         float: right;
     }
 
-    .popup-info-box .close-bar img{
+    .popup-info-box .close-bar img {
         width: 25px;
         filter: invert(1);
     }
@@ -850,7 +859,7 @@ body {
         font-size: 17px;
         text-align: justify;
         text-justify: inter-ideograph;
-        line-height:1.7em
+        line-height: 1.7em
     }
 
     .fullscreen-lirt p {
@@ -904,59 +913,19 @@ body {
     height: 7px;
     padding: 0px;
 }
-.story-end-line-white .ending-dot{
+
+.story-end-line-white .ending-dot {
     filter: invert(1);
 }
 
-.tips{
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    z-index: 9;
-}
-@media (max-width: 768px){
-    .tips{
-        display: none;
-    }
-}
-.tips::before{
-    content: '';
-    display: block;
-    width: 1px;
-    height: 100px;
-    position: absolute;
-    left: 45px;
-    bottom: 50px;
-    background: #212529;
-    
-}
-.tips::after{
-    content: '';
-    display: block;
-    width: 7px;
-    height: 7px;
-    position: absolute;
-    border-radius: 50%;
-    left: 42px;
-    bottom: 150px;
-    background: #212529;
-    animation: scroll 2s ease infinite;
-}
-@keyframes scroll{
-    0%{
-        opacity: 0;
-        transform: translateY(0px)
-    }
-    30%{
-        opacity: 1;
-        transform: translateY(0px)
-    }
-    70%{
-        opacity: 1;
-        transform: translateY(100px)
-    }
-    100%{
-        opacity: 0;
-        transform: translateY(100px)
+@media ( max-width: 345px) {
+    .subscription-box .text {
+        color: #ffffff;
+        position: absolute;
+        bottom: 6px;
+        left: 10px;
+        line-height: initial;
+        font-size: 12px;
+        max-width: calc(100% - 150px);
     }
 }
